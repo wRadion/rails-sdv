@@ -1,0 +1,9 @@
+<h1>Posts#new</h1>
+<p>Find me in app/views/posts/new.html.erb</p>
+
+<%= link_to "Retour", posts_path %>
+
+<%= form_with model: @post do |form| %>
+  <%= form.text_area :content %>
+  <%= form.submit "Créer" %>
+<% end %>
