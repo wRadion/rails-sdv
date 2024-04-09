@@ -1,0 +1,8 @@
+<h1>Posts#show</h1>
+
+<%= link_to "Retour", posts_path %>
+
+<div>
+  Post #<%= @post.id %> le <%= time_ago_in_words(@post.created_at) %>
+  <p><%= @post.content %></p>
+</div>

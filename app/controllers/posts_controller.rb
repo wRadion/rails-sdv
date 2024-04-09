@@ -4,6 +4,11 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  # GET /posts/:id
+  def show
+    @post = Post.find(params[:id])
+  end
+
   # GET /posts/new
   def new
     @post = Post.new
@@ -11,7 +16,7 @@ class PostsController < ApplicationController
 
   # POST /posts/create
   def create
-    Post.create(content: params[:post][:content])
+    Post.create(params[:post])
     redirect_to posts_path
   end
 
@@ -24,6 +29,12 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(content: params[:post][:content])
+    redirect_to posts_path
+  end
+
+  # DELETE /posts/:id
+  def destroy
+    Post.find(params[:id]).destroy
     redirect_to posts_path
   end
 end
