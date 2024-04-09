@@ -1,0 +1,17 @@
+fr:
+  hello: "Bonjour"
+  activerecord:
+    models:
+      user: "Utilisateur"
+    attributes:
+      user:
+        name: "Nom d'utilisateur"
+        password: "Mot de passe"
+        email: "E-Mail"
+        age: "Age"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: "n'est pas conforme"

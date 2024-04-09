@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
-  resources :users
   root 'home#index'
   get '/hello' => 'home#hello'
 
-  resources :posts
-  # get '/posts' => 'posts#index'
-  # get '/posts/new'
-  # post '/posts/create'
-  # get '/posts/:id/edit' => 'posts#edit'
-  # patch '/posts/:id' => 'posts#update'
-  # delete '/posts/:id' => 'posts#destroy'
+  scope '/:locale' do
+    resources :posts
+    resources :users
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

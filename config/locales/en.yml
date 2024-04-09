@@ -29,3 +29,18 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    models:
+      user: "User"
+    attributes:
+      user:
+        name: "Username"
+        password: "Password"
+        email: "E-Mail"
+        age: "Age"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: "is not standard email format"
