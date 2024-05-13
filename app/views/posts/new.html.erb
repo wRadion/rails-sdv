@@ -1,9 +1,22 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<%= link_to "< Retour", posts_path %>
 
-<%= link_to "Retour", posts_path %>
+<% if flash[:errors].present? %>
+  <% flash[:errors].each do |msg| %>
+    <p class="error"><%= msg %></p>
+  <% end %>
+<% end %>
+
+<% if params[:post_id] %>
+  Parent detected: <%= params[:post_id] %>
+<% end %>
 
 <%= form_with model: @post do |form| %>
-  <%= form.text_area :content %>
-  <%= form.submit "Créer" %>
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, size: '50x5' %>
+  </div>
+
+  <div align="right">
+    <%= form.submit "Créer" %>
+  </div>
 <% end %>

@@ -13,3 +13,96 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+  font-family: sans-serif;
+  color: white;
+  background-color: #111;
+  width: 800px;
+  margin: auto;
+  padding-top: 1em;
+}
+
+nav {
+  padding: 1em;
+  display: flex;
+  justify-content: flex-end;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  margin-bottom: 1em;
+}
+
+.content {
+  padding: 1em;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 4px;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: gray;
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+}
+
+ul.posts {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1em;
+  padding: 0;
+}
+
+li.post {
+  border-radius: 4px;
+  background-color: rgba(255,255,255,0.2);
+}
+
+.post .header {
+  padding: 1em;
+  background-color: rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+}
+
+.post .content {
+  padding: 1em;
+}
+
+button, input[type="submit"], .btn {
+  outline: none;
+  border: none;
+  padding: 0.5em;
+  background-color: cornflowerblue;
+  border-radius: 4px;
+}
+
+button:hover,
+input[type="submit"]:hover,
+a.btn:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  background-color: darkblue;
+}
+
+form {
+  margin-top: 1em;
+  padding: 1em;
+  background-color: rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+form .field {
+  display: flex;
+  gap: 1em;
+}

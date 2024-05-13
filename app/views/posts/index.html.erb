@@ -1,15 +1,28 @@
 <h1>Posts</h1>
 <p>Voici tous les posts :</p>
 
-<ul>
+<ul class="posts">
   <% @posts.each do |post| %>
-    <li><%= post.content %>
-      (
-        <%= link_to "Show", post_path(post) %>
-        <%= link_to "Edit", edit_post_path(post) %>
-        <%= link_to "Delete", post_path(post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-      )</li>
+    <li class="post">
+      <div class="header">
+        <span>
+          <%= I18n.t 'post.posted_by' %>
+          <b><%= post.user.name %></b>
+          <em><%= I18n.t 'ago', time: time_ago_in_words(post.created_at) %></em>
+        </span>
+
+        <span>
+          <%= link_to "Show", post_path(post) %>
+          <%= link_to "Edit", edit_post_path(post) %>
+          <%= link_to "Delete", post_path(post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+        </span>
+      </div>
+
+      <div class="content">
+        <%= post.content %>
+      </div>
+    </li>
   <% end %>
 </ul>
 
-<%= link_to "Créer un post", new_post_path  %>
+<%= link_to "Créer un post", new_post_path, class: "btn" %>

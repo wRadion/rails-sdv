@@ -2,10 +2,7 @@ class HomeController < ApplicationController
   def index
   end
 
-  def hello
-    @greetings = "Hello !"
-  end
-
-  def toto
+  def login
+    layout nil
   end
 end

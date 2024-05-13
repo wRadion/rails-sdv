@@ -1,10 +1,20 @@
 Rails.application.routes.draw do
-  root 'home#index'
-  get '/hello' => 'home#hello'
-
   scope '/:locale' do
+    get '/' => 'home#index'
+
     resources :posts
-    resources :users
+
+    resources :users, except: [:new]
+    get '/register' => 'users#new'
+
+    # resources :sessions, only: [:new, :destroy]
+    get '/login' => 'sessions#new'
+    post '/login' => 'sessions#create'
+    delete '/logout' => 'sessions#destroy'
+  end
+
+  resources :posts do
+    resources :posts, only: [:new, :create]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -10,22 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_09_113830) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_11_140933) do
   create_table "posts", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "post_id"
+    t.index ["post_id"], name: "index_posts_on_post_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "password"
-    t.integer "age"
+    t.string "name", limit: 16, null: false
+    t.string "password_digest", limit: 64, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email"
+    t.string "email", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "posts", "posts"
   add_foreign_key "posts", "users"
 end

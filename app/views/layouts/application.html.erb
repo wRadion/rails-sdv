@@ -11,6 +11,21 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav>
+      <div>
+        <%= link_to "Posts", posts_path %>
+
+        <% if session[:user_id].nil? %>
+          <%= link_to "Register", register_path %>
+          <%= link_to "Login", login_path %>
+        <% else %>
+          <%= link_to "Logout", logout_path, data: { turbo_method: :delete } %>
+        <% end %>
+      </div>
+    </nav>
+
+    <div class="content">
+      <%= yield %>
+    </div>
   </body>
 </html>

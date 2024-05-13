@@ -1,5 +1,13 @@
 fr:
   hello: "Bonjour"
+  ago: "il y a %{time}"
+  login: 'Se connecter'
+  datetime:
+    distance_in_words:
+      x_minutes:
+        "%{count} minutes"
+  post:
+    posted_by: "Posté par"
   activerecord:
     models:
       user: "Utilisateur"
@@ -10,7 +18,13 @@ fr:
         email: "E-Mail"
         age: "Age"
     errors:
+      messages:
+        record_invalid: "La ressource n'a pas pu être créée"
       models:
+        post:
+          attributes:
+            user:
+              required: "L'utilisateur est requis"
         user:
           attributes:
             email:

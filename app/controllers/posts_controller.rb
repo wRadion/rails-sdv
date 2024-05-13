@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :check_if_logged
+
   # GET /posts
   def index
     @posts = Post.all
@@ -16,8 +18,15 @@ class PostsController < ApplicationController
 
   # POST /posts/create
   def create
-    Post.create(params[:post])
-    redirect_to posts_path
+    post = Post.new(post_params)
+    post.user = User.find(session[:user_id])
+
+    if post.save
+      redirect_to posts_path
+    else
+      flash[:errors] = post.errors.full_messages
+      redirect_to new_post_path
+    end
   end
 
   # GET /posts/:id/edit
@@ -28,7 +37,7 @@ class PostsController < ApplicationController
   # PATCH /posts/:id
   def update
     @post = Post.find(params[:id])
-    @post.update(content: params[:post][:content])
+    @post.update(post_params)
     redirect_to posts_path
   end
 
@@ -37,4 +46,14 @@ class PostsController < ApplicationController
     Post.find(params[:id]).destroy
     redirect_to posts_path
   end
+
+  private
+
+    def post_params
+      params.require(:post).permit(:content)
+    end
+
+    def check_if_logged
+      redirect_to login_path if session[:user_id].nil?
+    end
 end
